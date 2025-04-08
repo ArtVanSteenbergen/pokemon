@@ -1,0 +1,3 @@
+@for (pokemon of pokemons.results; track pokemon; let i = $index) {
+    <a [routerLink]="[`/id/${i + 1}`]">{{pokemon.name}}</a>
+}
