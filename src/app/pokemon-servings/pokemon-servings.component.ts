@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-pokemon-servings',
@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class PokemonServingsComponent {
 
+  @Output() updatedServings = new EventEmitter<number>();
+
+  updateServings(event: any) {
+    this.updatedServings.emit(event.target.value);
+  }
 }

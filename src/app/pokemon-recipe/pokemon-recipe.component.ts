@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PokemonIngredientsComponent } from "../pokemon-ingredients/pokemon-ingredients.component";
 import { PokemonServingsComponent } from "../pokemon-servings/pokemon-servings.component";
 
@@ -8,7 +8,7 @@ import { PokemonServingsComponent } from "../pokemon-servings/pokemon-servings.c
   templateUrl: './pokemon-recipe.component.html',
   styleUrl: './pokemon-recipe.component.scss'
 })
-export class PokemonRecipeComponent {
+export class PokemonRecipeComponent implements OnInit {
   ingredients = [
     {
         "amount": 1,
@@ -51,4 +51,22 @@ export class PokemonRecipeComponent {
         "ingredient": "salt"
     }
 ]
+
+updatedIngredients: any = [];
+
+ngOnInit(): void {
+  this.updateServings(1);
+}
+
+updateServings(amount: any) {
+  this.updatedIngredients = [];
+
+  for (let ingredient of this.ingredients) {
+    this.updatedIngredients.push({
+      'amount': ingredient.amount * amount,
+      'ingredient': ingredient.ingredient,
+      'unit': ingredient.unit})
+  }
+}
+
 }

@@ -1,6 +1,6 @@
 <h2>ingredients</h2>
-<app-pokemon-servings></app-pokemon-servings>
-<app-pokemon-ingredients [ingredients]="ingredients"></app-pokemon-ingredients>
+<p>amount of people: <app-pokemon-servings (updatedServings)="updateServings($event)"></app-pokemon-servings></p>
+<app-pokemon-ingredients [ingredients]="updatedIngredients"></app-pokemon-ingredients>
 
 <h2>Instructions:</h2>
 <ol>
