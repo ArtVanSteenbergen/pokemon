@@ -1,10 +1,9 @@
 @if (pokemon.name) {
     <a routerLink="/">Back to overview</a>
     <h1>{{ pokemon.name }}</h1>
-    <img [src]="pokemon.sprites.front_default" alt="">
-    <audio controls>
+    <img [src]="pokemon.sprites.front_default" alt="" onclick="document.querySelector('audio').play()">
+    <audio>
         <source [src]="pokemon.cries.latest" type="audio/ogg">
-        Your browser does not support the audio element.
     </audio>
     <div>
         @if(id > 1) {
