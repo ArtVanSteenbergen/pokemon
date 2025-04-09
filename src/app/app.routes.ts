@@ -6,5 +6,6 @@ import { PokemonRecipeComponent } from './pokemon-recipe/pokemon-recipe.componen
 export const routes: Routes = [
     {path: '', component: PokemonListComponent},
     {path: 'id/:id', component: PokemonComponent},
-    {path: 'recipe', component: PokemonRecipeComponent}
+    {path: 'recipe', component: PokemonRecipeComponent},
+    {path: 'recipe/:weight', component: PokemonRecipeComponent}
 ];

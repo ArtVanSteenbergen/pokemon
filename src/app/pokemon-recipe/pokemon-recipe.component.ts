@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonIngredientsComponent } from "../pokemon-ingredients/pokemon-ingredients.component";
 import { PokemonServingsComponent } from "../pokemon-servings/pokemon-servings.component";
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-recipe',
-  imports: [PokemonIngredientsComponent, PokemonServingsComponent],
+  imports: [PokemonIngredientsComponent, PokemonServingsComponent, RouterLink],
   templateUrl: './pokemon-recipe.component.html',
   styleUrl: './pokemon-recipe.component.scss'
 })
 export class PokemonRecipeComponent implements OnInit {
+  constructor(private actRoute: ActivatedRoute) {}
   ingredients = [
     {
         "amount": 1,
@@ -55,7 +57,12 @@ export class PokemonRecipeComponent implements OnInit {
 updatedIngredients: any = [];
 
 ngOnInit(): void {
-  this.updateServings(1);
+  if (this.actRoute.snapshot.params['weight']) {
+    this.updateServings(Math.round(this.actRoute.snapshot.params['weight']/10));
+    document.getElementsByTagName('input')[0].value = `${Math.round(this.actRoute.snapshot.params['weight']/10)}`
+  } else {
+    this.updateServings(1);
+  }
 }
 
 updateServings(amount: any) {
@@ -65,7 +72,7 @@ updateServings(amount: any) {
     this.updatedIngredients.push({
       'amount': ingredient.amount * amount,
       'ingredient': ingredient.ingredient,
-      'unit': ingredient.unit})
+      'unit': (amount >= 2 ? ingredient.unit + 's' : ingredient.unit)})
   }
 }
 
