@@ -1,0 +1,15 @@
+.error{
+    padding: 1rem;
+    background-color: red;
+    color: white;
+}
+
+input, button {
+    display: flex;
+    margin-bottom: 1rem;
+
+    &.ng-invalid.ng-touched{
+        border: 1px solid #f25e5ec3;
+        background-color: #f25e5ec3;
+    }
+}

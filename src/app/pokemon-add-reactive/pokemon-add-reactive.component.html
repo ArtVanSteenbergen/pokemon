@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" name="name" id="pokemonName" formControlName="name" >
+    @if(invalidName){
+        <h1>the name should contain pika</h1>
+    }
+    <input type="text"  name="ability" id="pokemonAbility" formControlName="ability"  >
+    <button type="submit">submit new pokemon</button>
+
+    @if (invalidForm){
+        <div class="error">
+            something went wrong try again!
+        </div>
+    }
+
+    @for (pokemon of pokemons$ | async; track pokemon.name){
+        <p>{{pokemon.name}} - {{pokemon.ability}}</p>
+    }
+</form>
