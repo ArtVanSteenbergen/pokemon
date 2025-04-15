@@ -1,0 +1,10 @@
+<button (click)="increment()">Increment</button>
+
+<div>Amount of pokemon: {{ count$ | async }}</div>
+
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button>
+
+
+<a [routerLink]="[`/add-pokemon`]">Add a pokemon</a>

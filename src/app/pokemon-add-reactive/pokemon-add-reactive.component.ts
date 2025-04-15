@@ -44,13 +44,16 @@ export class PokemonAddReactiveComponent {
       this.form.controls.name.invalid
     )
   }
+  get invalidAbility() {
+    return (
+      this.form.controls.ability.touched && 
+      this.form.controls.ability.invalid
+    )
+  }
 
   get invalidForm() {
     return (
-      this.form.controls.name.touched &&
-      this.form.controls.name.invalid &&
-      this.form.controls.ability.touched &&
-      this.form.controls.ability.invalid 
+      this.invalidName && this.invalidAbility
     );
   }
 
