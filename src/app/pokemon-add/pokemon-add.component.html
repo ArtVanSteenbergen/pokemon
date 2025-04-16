@@ -1,12 +1,12 @@
 <form #form="ngForm" (ngSubmit)="submitForm(form)">
-    <label>Name: </label>
+    <label for="name">Name: </label>
     <input type="text" name="name" id="pokemonName" required minlength="4" ngModel #name="ngModel">
     <!-- @if (checkValid(form, 'name')){
         <div class="">
             your name is invalid
         </div>
     } -->
-    <label>Ability: </label>
+    <label for="ability">Ability: </label>
     <input type="text"  name="ability" id="pokemonAbility" required ngModel #ability="ngModel">
     <!-- @if (checkValid(form, 'ability')){
         <div class="">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonServiceService } from '../pokemon-service.service';
+import { Pokemon, Pokemons, PokemonServiceService } from '../pokemon-service.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -12,24 +13,24 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 export class PokemonComponent implements OnInit {
   constructor(private pokemonService: PokemonServiceService, private actRoute: ActivatedRoute) {}
   
-  id: number = 1;
-  pokemon: any;
-  pokemonSubscription: any;
+  id = 1;
+  pokemon: Pokemon = {name: '', sprites: {front_default: ''}, cries: {latest :''}, weight: 0};
+  pokemonSubscription!: Subscription;
 
   getPokemon() {
     this.id = parseInt(this.actRoute.snapshot.params['id']);
     this.pokemonSubscription = 
     this.pokemonService.getPokemon(this.id)
-    .subscribe((data: any) => {
-      this.pokemon = data;
+    .subscribe((data: Pokemons | Pokemon) => {
+      this.pokemon = data as Pokemon
       const audioPlayer = document.querySelector('audio') as HTMLAudioElement;
-      audioPlayer.load();
+      audioPlayer?.load();
     });
   }
   
   ngOnInit(): void {
     this.actRoute.params.subscribe(
-      params => {
+      () => {
           this.getPokemon();
       }
     );

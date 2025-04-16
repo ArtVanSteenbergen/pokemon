@@ -7,7 +7,8 @@ import { PokemonAddReactiveComponent } from './pokemon-add-reactive/pokemon-add-
 import { PokemonCountComponent } from './pokemon-count/pokemon-count.component';
 
 export const routes: Routes = [
-    {path: '', component: PokemonListComponent},
+    {path: '', redirectTo: 'pokemon', pathMatch: 'full'},
+    {path: 'pokemon',  component: PokemonListComponent},
     {path: 'id/:id', component: PokemonComponent},
     {path: 'recipe', component: PokemonRecipeComponent},
     {path: 'recipe/:weight', component: PokemonRecipeComponent},

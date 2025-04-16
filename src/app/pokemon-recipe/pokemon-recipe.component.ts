@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonIngredientsComponent } from "../pokemon-ingredients/pokemon-ingredients.component";
+import { Ingredients, PokemonIngredientsComponent } from "../pokemon-ingredients/pokemon-ingredients.component";
 import { PokemonServingsComponent } from "../pokemon-servings/pokemon-servings.component";
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
@@ -54,7 +54,7 @@ export class PokemonRecipeComponent implements OnInit {
     }
 ]
 
-updatedIngredients: any = [];
+updatedIngredients: Ingredients = [];
 
 ngOnInit(): void {
   if (this.actRoute.snapshot.params['weight']) {
@@ -65,10 +65,10 @@ ngOnInit(): void {
   }
 }
 
-updateServings(amount: any) {
+updateServings(amount: number) {
   this.updatedIngredients = [];
 
-  for (let ingredient of this.ingredients) {
+  for (const ingredient of this.ingredients) {
     this.updatedIngredients.push({
       'amount': ingredient.amount * amount,
       'ingredient': ingredient.ingredient,

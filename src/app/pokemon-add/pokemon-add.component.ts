@@ -13,7 +13,8 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class PokemonAddComponent {
   count$: Observable<number>;
- constructor(private store: Store<{ count: number }>) {
+  
+  constructor(private store: Store<{ count: number }>) {
     // TODO: Connect `this.count$` stream to the current store `count` state
     // this.count$ = 1;
     this.count$ = store.select('count');
@@ -21,6 +22,7 @@ export class PokemonAddComponent {
   }
 
   submitForm(formData: NgForm){
+    console.log('hello')
     if(formData.form.invalid){
       return ;
     }

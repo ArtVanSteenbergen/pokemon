@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokemonAddReactiveComponent } from './pokemon-add-reactive.component';
+import { provideState, provideStore } from '@ngrx/store';
+import { pokemonReducer } from '../ngrx/reducers/pokemon.reducer';
 
 describe('PokemonServingsComponent', () => {
   let component: PokemonAddReactiveComponent;
@@ -8,7 +10,11 @@ describe('PokemonServingsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PokemonAddReactiveComponent]
+      imports: [PokemonAddReactiveComponent],
+      providers: [
+        provideStore(),
+        provideState({name: 'pokemon', reducer: pokemonReducer})
+      ]
     })
     .compileComponents();
 

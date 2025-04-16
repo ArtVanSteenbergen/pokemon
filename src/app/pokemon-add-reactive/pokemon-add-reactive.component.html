@@ -3,16 +3,18 @@
     @if(invalidName){
         <h1>the name should contain pika</h1>
     }
-    <input type="text"  name="ability" id="pokemonAbility" formControlName="ability"  >
+    <input type="text"  name="url" id="pokemonUrl" formControlName="url"  >
     <button type="submit">submit new pokemon</button>
+    <a [routerLink]="[`/pokemon`]">go back to list</a>
 
     @if (invalidForm){
         <div class="error">
             something went wrong try again!
         </div>
     }
-
-    @for (pokemon of pokemons$ | async; track pokemon.name){
-        <p>{{pokemon.name}} - {{pokemon.ability}}</p>
+    @for (pokemon of (pokemons$ | async)?.results; track pokemon.name){
+        <p>{{pokemon.name}} - {{pokemon.url}}</p>
     }
+
+
 </form>

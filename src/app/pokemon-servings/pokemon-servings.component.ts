@@ -10,7 +10,7 @@ export class PokemonServingsComponent {
 
   @Output() updatedServings = new EventEmitter<number>();
 
-  updateServings(event: any) {
-    this.updatedServings.emit(event.target.value);
+  updateServings(event: Event) {
+    this.updatedServings.emit(+(event.target as HTMLInputElement)?.value);
   }
 }
