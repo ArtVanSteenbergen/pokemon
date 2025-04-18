@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Pokemon, Pokemons, PokemonServiceService } from '../pokemon-service.service';
+import { Component } from '@angular/core';
+import { Pokemons } from '../pokemon-service.service';
 import { RouterLink } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 
@@ -15,7 +15,7 @@ export class PokemonListComponent {
   pokemons$: Observable<Pokemons>
 
     constructor(private store: Store<{ pokemon: Pokemons}>) {
-        this.pokemons$ = store.select('pokemon');
+        this.pokemons$ = this.store.select('pokemon');
     }
     
   }
