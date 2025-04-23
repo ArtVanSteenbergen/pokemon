@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { PokemonServiceService } from './pokemon-service.service';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 
 describe('PokemonServiceService', () => {

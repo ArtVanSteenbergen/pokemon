@@ -51,6 +51,27 @@ describe('PokemonAddComponent', () => {
     expect(abilityInput.value).toBe('');
 
   });
+
+  it('should not reset the form after I submit it if my form is invalid when i only enter 3 characters for the name', () => {
+    expect(component).toBeTruthy();
+
+    const formElement = fixture.nativeElement.querySelector('form');
+    const nameInput = formElement.querySelector('input[name="name"]');
+    const abilityInput = formElement.querySelector('input[name="ability"]');
+    const submitButton = formElement.querySelector('button[type="submit"]');
+    
+    nameInput.value = 'abc';
+    abilityInput.value = 'thunderbolt';
+    nameInput.dispatchEvent(new Event('input'));
+    abilityInput.dispatchEvent(new Event('input'));
+
+    submitButton.click();
+
+    expect(nameInput.value).toBe('abc');
+    expect(abilityInput.value).toBe('thunderbolt');
+
+  });
+
   it('should navigate to counter on click', () => {
     expect(component).toBeTruthy();
 
